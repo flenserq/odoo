@@ -4,7 +4,7 @@
 #
 # To install your odoo development environement type:
 #
-# wget -O- https://raw.githubusercontent.com/odoo/odoo/master/odoo.py | python
+# wget -O- https://raw.githubusercontent.com/flenserq/master/odoo.py | python
 #
 # The setup_* subcommands used to boostrap odoo are defined here inline and may
 # only depends on the python 2.7 stdlib
@@ -24,8 +24,8 @@ GIT_HOOKS_PRE_PUSH = """
 #!/usr/bin/env python2
 import re
 import sys
-if re.search('github.com[:/]odoo/odoo.git$', sys.argv[2]):
-    print "Pushing to /odoo/odoo.git is forbidden, please push to odoo-dev, use --no-verify to override"
+if re.search('github.com[:/]flenserq/odoo.git$', sys.argv[2]):
+    print "Pushing to /flenserq/odoo.git is forbidden, please push to odoo-dev, use --no-verify to override"
     sys.exit(1)
 """
 
@@ -77,14 +77,14 @@ def cmd_setup_git_init():
         open(pre_push_path,'w').write(GIT_HOOKS_PRE_PUSH.strip())
         os.chmod(pre_push_path, 0755)
         # setup odoo remote
-        run('git','config','remote.odoo.url','https://github.com/odoo/odoo.git')
-        run('git','config','remote.odoo.pushurl','git@github.com:odoo/odoo.git')
+        run('git','config','remote.odoo.url','https://github.com/flenserq/odoo.git')
+        run('git','config','remote.odoo.pushurl','git@github.com:flenserq/odoo.git')
         run('git','config','--add','remote.odoo.fetch','dummy')
         run('git','config','--unset-all','remote.odoo.fetch')
         run('git','config','--add','remote.odoo.fetch','+refs/heads/*:refs/remotes/odoo/heads/*')
         # setup odoo-dev remote
-        run('git','config','remote.odoo-dev.url','https://github.com/odoo-dev/odoo.git')
-        run('git','config','remote.odoo-dev.pushurl','git@github.com:odoo-dev/odoo.git')
+        run('git','config','remote.odoo-dev.url','https://github.com/flenserq-dev/odoo.git')
+        run('git','config','remote.odoo-dev.pushurl','git@github.com:flenserq-dev/odoo.git')
         run('git','remote','update')
         # setup master branch
         run('git','config','branch.master.remote','odoo')
