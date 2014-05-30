@@ -83,8 +83,8 @@ def cmd_setup_git_init():
         run('git','config','--unset-all','remote.odoo.fetch')
         run('git','config','--add','remote.odoo.fetch','+refs/heads/*:refs/remotes/odoo/heads/*')
         # setup odoo-dev remote
-        run('git','config','remote.odoo-dev.url','https://github.com/flenserq-dev/odoo.git')
-        run('git','config','remote.odoo-dev.pushurl','git@github.com:flenserq-dev/odoo.git')
+        run('git','config','remote.odoo-dev.url','https://github.com/flenserq/odoo.git')
+        run('git','config','remote.odoo-dev.pushurl','git@github.com:flenserq/odoo.git')
         run('git','remote','update')
         # setup master branch
         run('git','config','branch.master.remote','odoo')
